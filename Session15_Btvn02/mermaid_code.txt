@@ -1,0 +1,40 @@
+erDiagram
+    CUSTOMER ||--o{ BOOKING : places
+    BOOKING ||--|{ TICKET : contains
+    SEAT ||--o{ TICKET : booked_as
+    SHOWTIME ||--o{ TICKET : scheduled_at
+
+    CUSTOMER {
+        int CustomerID PK
+        string FullName
+        string PhoneNumber
+        string Email
+    }
+
+    BOOKING {
+        int BookingID PK
+        int CustomerID FK
+        datetime BookingDate
+        decimal TotalAmount
+    }
+
+    TICKET {
+        int TicketID PK
+        int BookingID FK
+        int SeatID FK
+        int ShowtimeID FK
+        decimal Price
+    }
+
+    SEAT {
+        int SeatID PK
+        string SeatNumber
+        string SeatType
+    }
+
+    SHOWTIME {
+        int ShowtimeID PK
+        datetime StartTime
+        int MovieID
+        int RoomID
+    }
